@@ -1,7 +1,7 @@
 plot_lm = function(resp.data, expl.data, d = 1,
                    main = "", xlab = "Explanatory variable", ylab = "Response variable",
                    col = "black", bg = "black", l1.col = "red", l2.col = "black", pch = 21, cex = 1, las = 2, lty = 2, lwd = 2, 
-                   axes = TRUE, ylim = NULL, xlim = NULL, mod.pos = "front", plot.result = NULL, add = FALSE, predict = TRUE){
+                   axes = TRUE, ylim = c(min(resp.data)-(max(resp.data)*0.1),max(resp.data)+(max(resp.data)*0.1)), xlim = NULL, mod.pos = "front", plot.result = NULL, add = FALSE, predict = TRUE){
   n = length(resp.data)/length(unique(expl.data))
   mod = lm(resp.data ~ poly(expl.data, d, raw = T))
   s.mod = summary(mod) 
