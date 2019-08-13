@@ -9,6 +9,7 @@ y <- c(65,80,94,100,106,108.5,100,86,64,35.3,15)
 ```
 ### Linear model
 If only explanatory and response data are provided, a linear model and 95% confidence interval will be used
+Adjusted r² and model p-value will be printed in the console. In this case a linear model does not descibe the data very well and the model is not significant (r² = 0.121, p.val = 0.157)   
 ```
 plot_lm(expl.data = x, resp.data = y)
 ```
