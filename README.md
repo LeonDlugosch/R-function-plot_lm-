@@ -14,11 +14,16 @@ Adjusted r² and model p-value will be printed in the console. In this case a li
 ```
 plot_lm(expl.data = x, resp.data = y)
 ```
+![](images/Mod_d1.png)
+
+
 ### Higher order models
 Degrees of freedom for the model can be set using the "d" option, default = 1
 ```
 plot_lm(expl.data = x, resp.data = y, d = 2)
 ```
+![](images/Mod_d2.png)
+
 
 ### Customization
 ```
@@ -26,7 +31,7 @@ plot_lm(expl.data = x, resp.data = y, d = 2, pch = 21, bg = "deepskyblue", cex =
         main = "x ~ y²", xlab = "x value", ylab = "y value",
         mod.pos = "back", l1.col = "black", l2.col = "lightgrey", plot.result = "bottomleft")
 ```
-
+![](images/Mod_full.png)
 ### Full List of options
 ```
 resp.data         numeric vector of response Variables 
