@@ -26,10 +26,9 @@ plot_lm(expl.data = x, resp.data = y, d = 2, pch = 21, bg = "deepskyblue", cex =
         main = "x ~ y²", xlab = "x value", ylab = "y value",
         mod.pos = "back", l1.col = "black", l2.col = "lightgrey", plot.result = "bottomleft")
 ```
+
 ### Full List of options
 ```
-
-
 resp.data         numeric vector of response Variables 
 expl.data         numeric vector of explanatory variables
 d                 degrees of freedom  
