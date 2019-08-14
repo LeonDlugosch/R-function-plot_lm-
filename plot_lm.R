@@ -1,7 +1,7 @@
 plot_lm = function(resp.data, expl.data, d = 1,
                    main = "", xlab = "Explanatory variable", ylab = "Response variable",
                    col = "black", bg = "black", l1.col = "red", l2.col = "black", pch = 21, cex = 1, las = 2, lty = 2, lwd = 2, 
-                   axes = TRUE, ylim = c(min(resp.data)-(max(resp.data)*0.1),max(resp.data)+(max(resp.data)*0.1)), xlim = NULL, mod.pos = "front", plot.result = NULL, add = FALSE, predict = TRUE){
+                   axes = TRUE, ylim = c(min(resp.data)-(max(resp.data)*0.1),max(resp.data)+(max(resp.data)*0.1)), xlim = NULL, mod.pos = "front", plot.result = NULL, add = FALSE, predict = 0.95){
   n = length(resp.data)/length(unique(expl.data))
   mod = lm(resp.data ~ poly(expl.data, d, raw = T))
   s.mod = summary(mod) 
@@ -12,7 +12,7 @@ plot_lm = function(resp.data, expl.data, d = 1,
   attributes(p) = NULL
   
   if(p < 0.001){p = "< 0.001"}else{p = paste(" = ",round(p,3))}
-  fit.mod = as.data.frame(predict(mod, interval = "conf"))
+  fit.mod = as.data.frame(predict(mod, interval = "conf", level = predict))
   fit.mod$f = expl.data
   fit.mod = fit.mod[order(fit.mod$f),]
   if(add == FALSE){
@@ -20,7 +20,7 @@ plot_lm = function(resp.data, expl.data, d = 1,
                    main = paste(main), axes = axes, ylim = ylim, xlim = xlim, las = las)
   }
   if(mod.pos == "front"){points(y=resp.data, x=expl.data, pch = pch, bg = bg, cex = cex, col = col)}
-  if(predict == TRUE){
+  if(is.numeric(predict)){
     lines(fit.mod[,"lwr"] ~ fit.mod$f, col = l2.col, lty = 3, lwd = 2)
     lines(fit.mod[,"upr"] ~ fit.mod$f, col = l2.col, lty = 3, lwd = 2)
   }
